@@ -28,8 +28,9 @@ public class RPCClient {
     private String requestQueuename = "rpc_queue";
     private String replyQueueName;
     private DefaultConsumer _consumer;
+
     public RPCClient() throws IOException, TimeoutException {
-        ConnectionFactory factory =new ConnectionFactory();
+        ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RabbitConfig.ip);
         factory.setPort(RabbitConfig.port);
         factory.setUsername(RabbitConfig.username);
@@ -41,10 +42,10 @@ public class RPCClient {
         replyQueueName = channel.queueDeclare().getQueue();
         _consumer = setupConsumer();
     }
-    public String call(String message) throws IOException,
-            ShutdownSignalException, ConsumerCancelledException,
-            InterruptedException, TimeoutException{
-        if(_consumer == null)
+
+    public String call(String message) throws IOException, ShutdownSignalException, ConsumerCancelledException,
+            InterruptedException, TimeoutException {
+        if (_consumer == null)
             return null;
         BlockingCell<Object> k = new BlockingCell<Object>();
         BasicProperties props;
@@ -69,10 +70,11 @@ public class RPCClient {
             wrapper.initCause(sig);
             throw wrapper;
         } else {
-            return (String)reply;
+            return (String) reply;
         }
     }
-    public void close() throws IOException{
+
+    public void close() throws IOException {
         connection.close();
     }
 
@@ -89,6 +91,7 @@ public class RPCClient {
                     _consumer = null;
                 }
             }
+
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope,
                                        AMQP.BasicProperties properties, byte[] body)
@@ -113,10 +116,10 @@ public class RPCClient {
     }
 
     public static void main(String[] args) throws Exception {
-        RPCClient fibrpc =  new RPCClient();
+        RPCClient fibrpc = new RPCClient();
         System.out.println("request fib(30)");
-        String response =  fibrpc.call("30");
-        System.out.println("got "+response+",");
+        String response = fibrpc.call("30");
+        System.out.println("got " + response + ",");
         fibrpc.close();
     }
 }
