@@ -1,0 +1,24 @@
+package org.example.learn.rabbitmq.test;
+
+import org.example.learn.rabbitmq.producer.SimpleProducer;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RabbitMQTest {
+
+    @Resource
+    private SimpleProducer simpleProducer;
+
+    @Test
+    public void sendTest() {
+        String message = "测试 SpringBoot整合RabbitMq的普通模式";
+        simpleProducer.send(message);
+        System.out.println("springoobt exits main");
+    }
+}

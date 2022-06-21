@@ -1,0 +1,9 @@
+spring:
+  rabbitmq:
+    host: 192.168.42.103
+    port: 5672
+    virtual-host: /
+    username: guest
+    password: guest
+server:
+  port: 6501
