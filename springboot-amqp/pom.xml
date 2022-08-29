@@ -17,6 +17,7 @@
     <module>amqp-producer</module>
     <module>amqp-consumer</module>
     <module>amqp-comm</module>
+      <module>amqp-consumer2</module>
   </modules>
 
   <properties>

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class SimpleConsumerListener {
+public class SimpleConsumer2Listener {
 
-    private static Logger log = LoggerFactory.getLogger(SimpleConsumerListener.class);
+    private static Logger log = LoggerFactory.getLogger(SimpleConsumer2Listener.class);
 
     /**
      * 监听某个队列的消息

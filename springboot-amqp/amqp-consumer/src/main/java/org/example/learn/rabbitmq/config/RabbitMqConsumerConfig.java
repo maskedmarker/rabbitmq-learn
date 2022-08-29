@@ -10,5 +10,5 @@ import org.springframework.context.annotation.Configuration;
  * RabbitMq 配置类
  */
 @Configuration
-public class ConsumerRabbitMqConfig {
+public class RabbitMqConsumerConfig {
 }

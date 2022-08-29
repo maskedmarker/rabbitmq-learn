@@ -9,4 +9,4 @@ spring:
       simple:
         prefetch: 1
 server:
-  port: 6500
+  port: 6502

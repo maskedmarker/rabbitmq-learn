@@ -11,10 +11,9 @@ import org.springframework.context.annotation.Configuration;
  * producer需要声明队列/交换机/绑定关系,而consumer只需要向broker发送消费特定队列的消息请求
  */
 @Configuration
-public class ProducerRabbitMqConfig {
+public class RabbitMqProducerConfig {
     /**
      * 创建 交换机
-     * @return
      */
     @Bean
     public Exchange simpleExchange(){
@@ -23,7 +22,6 @@ public class ProducerRabbitMqConfig {
 
     /**
      * 创建 队列
-     * @return
      */
     @Bean
     public Queue simpleQueue(){
@@ -32,12 +30,9 @@ public class ProducerRabbitMqConfig {
 
     /**
      * 绑定 交换机与队列
-     * @param exchange
-     * @param queue
-     * @return
      */
     @Bean
-    public Binding itemQueueExchange(@Qualifier("simpleExchange") Exchange exchange, @Qualifier("simpleQueue") Queue queue){
+    public Binding bindQueueToExchange(@Qualifier("simpleExchange") Exchange exchange, @Qualifier("simpleQueue") Queue queue){
         return BindingBuilder.bind(queue).to(exchange).with("").noargs();
     }
 
