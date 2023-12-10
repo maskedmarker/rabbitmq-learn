@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * org.springframework.amqp.rabbit.annotation.RabbitListener#containerFactory()如果不指定的话,会使用默认的值,即
+ * org.springframework.amqp.rabbit.annotation.RabbitListenerAnnotationBeanPostProcessor#DEFAULT_RABBIT_LISTENER_CONTAINER_FACTORY_BEAN_NAME
+ */
 @Component
 public class SimpleConsumerListener {
 

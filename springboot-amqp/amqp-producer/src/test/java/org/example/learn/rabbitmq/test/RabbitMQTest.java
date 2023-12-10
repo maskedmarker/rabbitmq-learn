@@ -18,11 +18,11 @@ public class RabbitMQTest {
 
     @Test
     public void sendTest() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000000; i++) {
             String message = String.format("测试 SpringBoot整合RabbitMq的普通模式,index=%d", i);
             simpleProducer.send(message);
             try {
-                TimeUnit.SECONDS.sleep(60);
+                TimeUnit.SECONDS.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
